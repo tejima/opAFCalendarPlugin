@@ -82,7 +82,7 @@ EOF;
 
             $act = new ActivityData();
             $act->setMemberId($memberConfig->member_id);
-            $act->setBody("そろそろ時間だ：" . $event->title);
+            $act->setBody("そろそろ時間だ[" . date("H:i",$t_starttime) . "]" . $event->title);
             $act->setSource("GoogleCalendar");
             $act->setSourceUri("https://www.google.com/calendar/hosted/tejimaya.com/render");
             $act->setIsMobile(0);
