@@ -23,8 +23,18 @@ class opAFCalendarPluginActions extends sfActions
   *
   * @param sfWebRequest $request A request object
   */
+
   public function executeIndex(sfWebRequest $request)
   {
-    $this->forward('default', 'module');
+    $this->form = new opAFCalendarPluginConfigForm();
+    if ($request->isMethod(sfWebRequest::POST))
+    {
+      $this->form->bind($request->getParameter('calendar'));
+      if ($this->form->isValid())
+      {
+        $this->form->save();
+        $this->redirect('opAFCalendarPlugin/index');
+      }
+    }
   }
 }
